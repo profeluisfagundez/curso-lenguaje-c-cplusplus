@@ -22,7 +22,6 @@ int main() {
      exit(1);
  }
 
- fruta
  /* enviar la consulta SQL */
  if (mysql_query(conn, "show tables")) {
      fprintf(stderr, "%s\n", mysql_error(conn));
