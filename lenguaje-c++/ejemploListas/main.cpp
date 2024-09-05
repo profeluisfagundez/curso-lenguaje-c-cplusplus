@@ -1,12 +1,23 @@
 #include <iostream>
+/*include -> palabra reservada del lenguaje C++
+Permite llamar archivos, en este caso la libreria estandar de
+Entrada y salida de datos iostream para usar cout y cin*/
 using namespace std;
 
+/*
+    Me permite generar una estructura que pueda guardar
+    varios datos en una sala palabra reservada
+*/
+
+//Primer paso: declarar la estructura y sus datos
 struct nodo {
-    int info;
-    nodo* sig;
+    int info; // Un tipo de dato entero feliz
+    nodo* sig; // Un puntero feliz, es de tipo nodo
 };
 
-typedef nodo* lista;
+//Genero un alias de nodo llamado lista
+typedef nodo* lista; //Alias para resumir la forma de llamar la lista
+
 
 void insFront(lista& L, int n);
 void mostrar(const nodo* L);
@@ -45,22 +56,23 @@ int main() {
 }
 
 void insFront(lista& L, int n) {
-    nodo* aux = new nodo;
-    aux->info = n;
-    aux->sig = L;
-    L = aux;
+    nodo* aux = new nodo; //Declaramos un nodo y le pones de nombre aux
+    aux->info = n; // el valor n que recibimos se lo asignamos a nodo
+    aux->sig = L; // La lista que recibimos se la asignamos a sig
+    L = aux; // Le decimos que aux es la nueva cabeza de la lista
     cout << "Se agrego el " << n << " a la lista\n";
 }
 
 void mostrar(const nodo* L) {
     while (L != nullptr) {
         cout << L->info << " - ";
-        L = L->sig;
+        L = L->sig; //Avance un nodo en la lista (sig hace referencia al puntero)
     }
     cout << "\n";
 }
 
 void borrar(lista& L, int n) {
+    // Pregunto si la lista es vacia
     if (L == nullptr) {
         return;
     }
